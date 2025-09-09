@@ -22,10 +22,16 @@ while valid_num:
             nums_lst.append(float(num))
         nums = nums_lst
 
-        print(f"The sum of your numbers is: {sum(nums)} \n")
+        print(f"The sum of your numbers is: {sum(nums): .2f} \n")
         valid_num = False
     except ValueError:
         print("The value you input is not valid, try again \n")
+
+
+
+
+
+
 
 
 
