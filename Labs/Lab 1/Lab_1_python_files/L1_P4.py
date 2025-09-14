@@ -65,10 +65,10 @@ class Course:
 
 
     
-    def format(self):
+    def format(self, course_num):
         return(
 
-            f"COURSE: {self.dept}{self.num}: {self.name}\n"
+            f"COURSE {course_num}:  {self.dept}{self.num}: {self.name}\n"
             f"Number of Credits: {self.credits}\n"
             f"Days of Lectures: {self.days}\n"
             f"Lecture Time: {self.start_time} - {self.end_time}\n"
@@ -76,5 +76,34 @@ class Course:
         )
 
 def class_sched():
-    with open("classesInput.txt", "r") as file:
+    with open("Labs/Lab 1/Lab_1_python_files/classesInput.txt", "r") as file:
         lines = file.readlines()
+
+    num_courses = int(lines[0].strip())
+    courses = []
+
+    index = 1
+
+    for i in range(num_courses):
+        dept = lines[index].strip()
+        num = lines[index + 1].strip()
+        name = lines[index + 2].strip()
+        credits = lines[index + 3].strip()
+        days = lines[index + 4].strip()
+        start_time = lines[index + 5].strip()
+        end_time = lines[index + 6].strip()
+        avg_grade = lines[index + 7].strip()
+
+        index += 8
+
+        course = Course(dept, num, name, credits, days, start_time, end_time, avg_grade)
+
+        courses.append(course)
+
+    
+    with open("formatted_schedule.txt", "w") as file:
+        for index, course in enumerate(courses, 1):
+            file.write(course.format(index) + "\n")
+
+
+class_sched()
