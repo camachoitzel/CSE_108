@@ -64,7 +64,7 @@ def get_grade(grades):
     # check if name is in dict
     if name_search in grades.keys():
         # get the grade if name is in dict
-        grade = name_search.get()
+        grade = grades[name_search]
         # print the student's grade
         print(f"{name_search}'s grade: {grade} \n")
     else:
@@ -73,30 +73,44 @@ def get_grade(grades):
 
 
 def edit_grade(grades):
-    name = input("Enter a student's full name to edit the grade: /n")
+    # get student name
+    name = input("Enter a student's full name to edit the grade: \n")
 
+    # check if name is in dict keys
     if name in grades.keys():
+        # if name exists input new grade
         new_grade = input(f"Enter the new grade for {name}: \n")
+        # set the value of the name key to the new input grade
         grades[name] = new_grade
+        # update the grades.txt file by calling save_grades
         save_grades(grades)
+        # let user know grade was updated
         print(f"{name}'s grade updated \n")
     else:
+        # student not in dict
         print("Student not found \n")
 
 def delete_grade(grades):
+    # get student name 
     name = input("Enter a student't full name to delete grade: \n")
 
+    # check if name is in dict keys
     if name in grades.keys():
+        # set value of name key to None
         grades[name] = None
+        # update grades file
         save_grades(grades)
         print(f"{name}'s grade has been deleted \n")
     else:
         print("Student not found \n")
 
 def grade_prgrm():
+    # creates grades dict
     grades = load_grades()
 
+    # infinite loop to display menu
     while True:
+        # display menu options
         print("MENU: \n")
         print("1. Add a grade")
         print("2. Get a grade")
@@ -104,8 +118,10 @@ def grade_prgrm():
         print("4. Delete a grade")
         print("5. Exit")
 
+        # get choice from user
         user_choice = input("Choose an option: \n")
 
+        # set the action that aligns with user choice
         if user_choice == "1":
             create_grade(grades)
         elif user_choice == "2":
@@ -119,6 +135,8 @@ def grade_prgrm():
             break
         else:
             print("Invalid input, please try again. \n")
+
+grade_prgrm()
 
 
 
