@@ -29,6 +29,7 @@ def word_count():
             translator = str.maketrans({key: " " for key in string.punctuation})
             # replaces all punctiation with spaces " "
             content = content.translate(translator)
+            # splits the file content into a list of words then counts the occurences of the word you are looking for
             word_count = content.split().count(word)
         
         print(f"The word {word} occurs {word_count} times")

@@ -78,13 +78,19 @@ class Course:
 def class_sched():
     with open("Labs/Lab 1/Lab_1_python_files/classesInput.txt", "r") as file:
         lines = file.readlines()
-
+    
+    # take the 1st line and remove any extra white space and convert to an int to know
+    # how many classes will be input for the schedule
     num_courses = int(lines[0].strip())
+    # empty list to hold course data
     courses = []
-
+    # start index at 1
     index = 1
 
+    # loops the num_courses times
     for i in range(num_courses):
+        # get the data for each section by increasing the index
+        # and get rid of any extra white space
         dept = lines[index].strip()
         num = lines[index + 1].strip()
         name = lines[index + 2].strip()
@@ -94,15 +100,20 @@ def class_sched():
         end_time = lines[index + 6].strip()
         avg_grade = lines[index + 7].strip()
 
+        # increase index by 8 to move onto the next course
         index += 8
 
+        # create a course object to hold the data for each course
         course = Course(dept, num, name, credits, days, start_time, end_time, avg_grade)
 
+        # append course object into the courses list
         courses.append(course)
 
-    
+    # open formatted_schedule to write to it 
     with open("formatted_schedule.txt", "w") as file:
+        # loop though the index and the course object in the list and start the index at 1 to correctly number the course
         for index, course in enumerate(courses, 1):
+            # write the data to file
             file.write(course.format(index) + "\n")
 
 
