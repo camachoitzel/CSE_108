@@ -37,7 +37,7 @@ button{
     height: 100px;
     border-radius: 50px;
     border: none;
-    background-color: hsl(0, 0%, 30%);
+    background-color: hsl(106, 68%, 36%);
     color: white;
     font-size: 3rem;
     font-weight: bold;
@@ -46,11 +46,11 @@ button{
 }
 
 button:hover{
-    background-color: hsl(0, 0%, 40%);
+    background-color: hsl(106, 68%, 46%);
 
 }
 button:active{
-        background-color: hsl(0, 0%, 50%);
+    background-color: hsl(106, 68%, 56%);
 
 }
 .operator-btn{
