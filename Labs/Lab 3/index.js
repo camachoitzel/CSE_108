@@ -13,6 +13,20 @@ let lastResult = null;
 let activeOperatorBtn = null;
 
 function appendToDisplay(input) {
+     if (input === '.') {
+        // Prevent multiple decimals in the current number
+        // Find the current number being typed (after last operator)
+        const currentValue = display.value;
+        // Use a regex to get the last number segment:
+        const parts = currentValue.split(/[\+\-\*\/]/);
+        const lastNumber = parts[parts.length - 1];
+
+        if (lastNumber.includes('.')) {
+            // Already has a decimal, don't add another
+            return;
+        }
+    }
+    
     // If an operator was just pressed, clear display for next number
     if (operatorJustPressed) {
         display.value = "";
@@ -75,6 +89,7 @@ function operatorButtonPressed(operator, btn) {
 }
 
 function operate(operator, a, b) {
+
     if (operator === '+') return a + b;
     if (operator === '-') return a - b;
     if (operator === '*') return a * b;
