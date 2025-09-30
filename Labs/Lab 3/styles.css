@@ -75,3 +75,8 @@ button:active{
 .clear-btn:active{
     background-color: hsl(19, 96%, 62%);
 }
+
+.active-operator{
+    box-shadow: 0 0 0 4px #ffb700;
+    background-color: hsl(197, 100%, 63%);
+}
