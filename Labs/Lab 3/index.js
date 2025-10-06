@@ -1,22 +1,25 @@
 //Calculator Program
+import React, { useState } from 'react';
 
-const display = document.getElementById("display");
+
+const displayValue = useState('');
 const operatorBtns = document.querySelectorAll(".operator-btn");
 //keep track of the numbers operators and result
-let firstNumber = null;
-let secondNumber = null;
-let currentOperator = null;
-let lastOperator = null;
-let lastOperand = null;
-let operatorJustPressed = false;
-let lastResult = null;
-let activeOperatorBtn = null;
+let firstNumber = useState(null);
+let secondNumber = useState(null);
+let currentOperator = useState(null);
+let lastOperator = useState(null);
+let lastOperand = useState(null);
+let operatorJustPressed = useState(false);
+let lastResult = useState(null);
+let activeOperatorBtn =useState(null);
 
 function appendToDisplay(input) {
      if (input === '.') {
         // Prevent multiple decimals in the current number
         // Find the current number being typed (after last operator)
-        const currentValue = display.value;
+        const currentValue = displayValue;
+        
         // Use a regex to get the last number segment:
         const parts = currentValue.split(/[\+\-\*\/]/);
         const lastNumber = parts[parts.length - 1];
@@ -29,7 +32,7 @@ function appendToDisplay(input) {
     
     // If an operator was just pressed, clear display for next number
     if (operatorJustPressed) {
-        display.value = "";
+        displayValue = "";
         operatorJustPressed = false;
         removeOperatorHighlight();
     }
