@@ -91,11 +91,13 @@ async function searchStudent() {
         }
 
         const student = await response.json();
-        
+        const studentName = Object.keys(student)[0];
+        const studentGrade = student[studentName];
+            
         // Display the result in a table
         let html = '<table>';
         html += '<tr><th>Student Name</th><th>Grade</th></tr>';
-        html += '<tr><td>' + student.name + '</td><td>' + student.grade + '</td></tr>';
+        html += '<tr><td>' + studentName + '</td><td>' + studentGrade + '</td></tr>';
         html += '</table>';
         
         document.getElementById('searchResult').innerHTML = html;
