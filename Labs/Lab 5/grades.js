@@ -74,6 +74,7 @@ function displayStudents() {
 }
 
 // Function 1: Search for one student's grade
+//GET request
 async function searchStudent() {
     const name = document.getElementById('searchName').value;
     
@@ -110,6 +111,7 @@ async function searchStudent() {
 }
 
 // Function 2: Get all students
+//GET request
 async function getAllStudents() {
     try {
         // Make a GET request to get all students
@@ -165,6 +167,7 @@ async function getAllStudents() {
 }
 
 // Function 3: Add a new student
+//POST request
 async function addStudent() {
     const name = document.getElementById('newName').value;
     const grade = document.getElementById('newGrade').value;
@@ -218,6 +221,8 @@ function showEditForm(name) {
     updateGrade(name, parseFloat(newGrade));
 }
 
+//Function 5: Update a student's grade after edit
+//PUT request
 async function updateGrade(name, newGrade) {
     try {
         // Make a PUT request to update the grade
@@ -244,6 +249,7 @@ async function updateGrade(name, newGrade) {
 }
 
 // Function 5: Delete a student
+//DELETE request
 async function deleteStudent(name) {
     const confirmed = confirm('Are you sure you want to delete ' + name + '?');
     
