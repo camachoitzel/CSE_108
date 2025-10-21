@@ -1,10 +1,13 @@
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
 import json
 import os
 
 
+
 app = Flask(__name__)
 GRADES_FILE = 'grades.json'
+CORS(app)
 
 
 def load_grades():
@@ -23,7 +26,7 @@ def save_grades(grades):
 def index():
     return render_template('index.html')
 
-
+# GET
 @app.route('/grades', methods=['GET'])
 def get_grades():
     grades = load_grades()
@@ -38,7 +41,7 @@ def get_grade(name):
     else:
         return jsonify({"error": "Student not found"}), 404
     
-
+# POST
 @app.route('/grades', methods=['POST'])
 def add_grade():
     grades = load_grades()
@@ -69,7 +72,7 @@ def add_grade():
     save_grades(grades)
     return jsonify(grades), 201
 
-
+# PUT
 @app.route('/grades/<string:name>', methods=['PUT'])
 def edit_grade(name):
     grades = load_grades()
@@ -88,6 +91,7 @@ def edit_grade(name):
     save_grades(grades)
     return jsonify(grades)
 
+# DELETE
 @app.route('/grades/<string:name>', methods=['DELETE'])
 def delete_grade(name):
     grades = load_grades()
