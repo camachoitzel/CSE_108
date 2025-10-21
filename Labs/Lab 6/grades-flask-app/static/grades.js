@@ -1,5 +1,5 @@
 // This is the URL of our backend server
-const API_URL = 'http://localhost:5000/grades';
+const API_URL = 'https://amhep.pythonanywhere.com/grades';
 
 // Pagination settings
 const rowsPerPage = 10; // Show 10 students per page
