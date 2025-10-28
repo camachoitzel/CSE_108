@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<h1>📚 Grades Management System</h1>
+
+<!-- SECTION 1: Search for a single student -->
+<div class="section">
+    <h2>1. Search for a Student</h2>
+    <label>Student Name:</label>
+    <input type="text" id="searchName" placeholder="Example: John Doe">
+    <button onclick="searchStudent()">Search</button>
+    <div id="searchMessage" class="message"></div>
+    <div id="searchResult"></div>
+</div>
+
+<!-- SECTION 2: See all students -->
+<div class="section">
+    <h2>2. View All Students</h2>
+    <button onclick="getAllStudents()">Show All Students</button>
+    <div id="allMessage" class="message"></div>
+    <div id="allStudents"></div>
+    <div id="pagination"></div>
+</div>
+
+<!-- SECTION 3: Create a new student -->
+<div class="section">
+    <h2>3. Add a New Student</h2>
+    <label>Student Name:</label>
+    <input type="text" id="newName" placeholder="Example: Jane Smith">
+    <label>Grade:</label>
+    <input type="number" id="newGrade" placeholder="Example: 92" min="0" max="100">
+    <button onclick="addStudent()">Add Student</button>
+    <div id="addMessage" class="message"></div>
+</div>
+
+<script src="{{ url_for('static', filename='grades.js') }}"></script>
+
+</body>
+</html>
